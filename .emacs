@@ -1,10 +1,11 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;     GNU Emacs configuration file     ;;;;;;;;
-;;;;;;;;        Copyright (C) karlkorp        ;;;;;;;;
-;;;;;;;;           Author: karlkorp           ;;;;;;;;
-;;;;;;;;        License: public domain        ;;;;;;;;
-;;;;;;;;     Contact: <lispgod@gmail.com>     ;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;     GNU Emacs configuration file          ;;;;;;;;
+;;;;;;;;        Copyright (C) warlock_29A          ;;;;;;;;
+;;;;;;;;           Author: warlock                 ;;;;;;;;
+;;;;;;;;     Fork by: karlkorp (lispgod@gmail.com) ;;;;;;;;
+;;;;;;;;     License: public domain                ;;;;;;;;
+;;;;;;;;     Contact: <avatar29A@gmail.com>          ;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun system-is-linux ()
     "Linux system checking."
@@ -29,8 +30,8 @@
 (require 'midnight)
 
 ;; User name and e-mail
-(setq user-full-name   "karlkorp")
-(setq user-mail-adress "lispgod@gmail.com")
+(setq user-full-name   "Warlock_29A")
+(setq user-mail-adress "avatar29A@gmail.com")
 
 ;; Paths (for Common Lisp compiler - SBCL)
 (setq unix-sbcl-bin    "/usr/bin/sbcl")
