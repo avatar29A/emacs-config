@@ -49,6 +49,8 @@
   '(slime
     smartparens
     auto-complete
+    ac-slime
+    neotree
     zenburn-theme))
 
 ;; Require Common Lisp extensions
