@@ -487,16 +487,11 @@
 (global-set-key (kbd "\C-cc") 'org-capture)
 (global-set-key (kbd "\C-cl") 'org-store-link)
 
-;; Warlock
-
-;; EMMS Plugin
-(add-to-list 'load-path' "~/git/emms/lisp/")
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
-
-(require 'emms-playlist-mode)
-(setq emms-source-file-default-directory "~/Музыка/")
+;; ac-slime
+ (add-hook 'slime-mode-hook 'set-up-slime-ac)
+ (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+ (eval-after-load "auto-complete"
+   '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; NeoTree plugin
                                         ; add source packages
