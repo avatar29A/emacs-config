@@ -51,7 +51,8 @@
     auto-complete
     ac-slime
     neotree
-    zenburn-theme))
+    zenburn-theme
+    srefactor))
 
 ;; Require Common Lisp extensions
 (require 'cl)
@@ -503,3 +504,17 @@
                                         ;(add-to-list 'load-path "/directory/containing/neotree/")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(setq-default lisp-body-indent 4)
+(setq lisp-indent-function 'common-lisp-indent-function)
+(put 'upcase-region 'disabled nil)
+
+;; srefactor
+(require 'srefactor)
+(require 'srefactor-lisp)
+
+;; srefactor key bindings:
+(global-set-key (kbd "C-x RET o") 'srefactor-lisp-one-line)
+(global-set-key (kbd "C-x RET m") 'srefactor-lisp-format-sexp)
+(global-set-key (kbd "C-x p") 'srefactor-lisp-format-defun)
+(global-set-key (kbd "C-x RET b") 'srefactor-lisp-format-buffer)
