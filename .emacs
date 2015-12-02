@@ -326,18 +326,23 @@
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 
 ;; Motion keys:
+(defvar motion-keys-minor-mode-map (make-keymap) "motion-keys-minor-mode keymap.")
 ;; Go to previous line
-(global-set-key (kbd "M-i") 'previous-line)
-;; Go to next line
-(global-set-key (kbd "M-k") 'next-line)
+(define-key motion-keys-minor-mode-map (kbd "M-i") 'previous-line)
 ;; Backward char
-(global-set-key (kbd "M-j") 'backward-char)
-;; Froward char
-(global-set-key (kbd "M-l") 'forward-char)
+(define-key motion-keys-minor-mode-map (kbd "M-j") 'backward-char)
+;; Forward char
+(define-key motion-keys-minor-mode-map (kbd "M-l") 'forward-char)
+;; Go to next line
+(define-key motion-keys-minor-mode-map (kbd "M-k") 'next-line)
 ;; Backward word
-(global-set-key (kbd "M-u") 'backward-word)
-;; Forward ward
-(global-set-key (kbd "M-o") 'forward-word)
+(define-key motion-keys-minor-mode-map (kbd "M-u") 'backward-word)
+;; Forward word
+(define-key motion-keys-minor-mode-map (kbd "M-o") 'forward-word)
+
+(define-minor-mode motion-keys-minor-mode "Fix conflict motion bindings with ather modes." t "motion-keys" 'motion-keys-minor-mode-map)
+(motion-keys-minor-mode 1)
+
 ;; Go to line beginning
 (global-set-key (kbd "M-a") 'beginning-of-visual-line)
 ;; Go to line end
