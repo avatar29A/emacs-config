@@ -339,9 +339,18 @@
 (define-key motion-keys-minor-mode-map (kbd "M-u") 'backward-word)
 ;; Forward word
 (define-key motion-keys-minor-mode-map (kbd "M-o") 'forward-word)
+;; Window move up
+(define-key motion-keys-minor-mode-map (kbd "C-i") 'windmove-up)
+;; Window move down
+(define-key motion-keys-minor-mode-map (kbd "C-k") 'windmove-down)
+;; Window move left
+(define-key motion-keys-minor-mode-map (kbd "C-j") 'windmove-left)
+;; Window move right
+(define-key motion-keys-minor-mode-map (kbd "C-l") 'windmove-right)
 
 (define-minor-mode motion-keys-minor-mode "Fix conflict motion bindings with ather modes." t "motion-keys" 'motion-keys-minor-mode-map)
 (motion-keys-minor-mode 1)
+
 
 ;; Go to line beginning
 (global-set-key (kbd "M-a") 'beginning-of-visual-line)
