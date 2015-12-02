@@ -532,3 +532,7 @@
 (global-set-key (kbd "C-x RET m") 'srefactor-lisp-format-sexp)
 (global-set-key (kbd "C-x p") 'srefactor-lisp-format-defun)
 (global-set-key (kbd "C-x RET b") 'srefactor-lisp-format-buffer)
+
+;; Nyan Mode
+(require 'nyan-mode)
+(nyan-mode 1)
