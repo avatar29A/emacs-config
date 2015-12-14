@@ -52,7 +52,9 @@
     ac-slime
     neotree
     zenburn-theme
-    srefactor))
+    srefactor
+    paredit
+    redshank))
 
 ;; Require Common Lisp extensions
 (require 'cl)
@@ -233,21 +235,6 @@
                         (untabify (point-min) (point-max)))) nil)
 (add-to-list 'write-file-functions 'format-buffer)
 
-;; CEDET (C/C++)
-(require 'cedet)
-(require 'cc-mode)
-(add-to-list 'semantic-default-submodes
-             '(global-semanticdb-minor-mode
-               global-semantic-mru-bookmark-mode
-               global-semantic-idle-scheduler-mode
-               global-semantic-highlight-func-mode
-               global-semantic-idle-completions-mode
-               global-semantic-show-parser-state-mode))
-(semantic-mode   t)
-(global-ede-mode t)
-(require 'ede/generic)
-(require 'semantic/ia)
-(ede-enable-generic-projects)
 
 ;; Bookmarks
 (require 'bookmark)
@@ -256,21 +243,6 @@
     (bookmark-load bookmark-default-file t))
 (setq bookmark-default-file (concat user-emacs-directory "bookmarks"))
 
-;; Skeletons:
-;; Python skeleton
-(define-skeleton python-skeleton
-    "Python initialise skeleton" nil
-    "#!/usr/bin/env python\n"
-    "# -*- coding: utf-8 -*-\n"
-    "\n"_)
-
-;; Perl skeleton
-(define-skeleton perl-skeleton
-    "Perl initialise skeleton" nil
-    "#!/usr/bin/env perl\n\n"
-    "use warnings;\n"
-    "use strict;\n"
-    "\n"_)
 
 ;; Auto-insert mode
 (require 'autoinsert)
@@ -445,26 +417,6 @@
     (function-newline-and-indent))
 (global-set-key (kbd "C-o") 'add-line-above)
 
-(defun python-newline ()
-    "Clever Python newline."
-    (interactive)
-    (end-of-visual-line)
-    (insert ":")
-    (newline-and-indent))
-(global-set-key (kbd "M-r") 'python-newline)
-
-(defun C/C++/java-newline ()
-    "Clever C/C++/Java newline."
-    (interactive)
-    (end-of-visual-line)
-    (insert " {")
-    (newline-and-indent)
-    (insert "}")
-    (previous-line)
-    (format-buffer)
-    (function-newline-and-indent))
-(global-set-key (kbd "M-y") 'C/C++/java-newline)
-
 ;; Add comment according major mode
 (global-set-key (kbd "M-/") 'comment-dwim)
 ;; Set mark command
@@ -505,17 +457,12 @@
 (global-set-key (kbd "\C-cl") 'org-store-link)
 
 ;; ac-slime
- (add-hook 'slime-mode-hook 'set-up-slime-ac)
- (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
- (eval-after-load "auto-complete"
-   '(add-to-list 'ac-modes 'slime-repl-mode))
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete"
+                 '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; NeoTree plugin
-                                        ; add source packages
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/"))
-
-                                        ;(add-to-list 'load-path "/directory/containing/neotree/")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
@@ -536,3 +483,11 @@
 ;; Nyan Mode
 (require 'nyan-mode)
 (nyan-mode 1)
+
+;; slime-helper
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+
+;; Redshank mode
+(paredit-mode 1)
+(redshank-mode 1)
